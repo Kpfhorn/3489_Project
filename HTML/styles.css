@@ -28,9 +28,6 @@
 	font-size: 200%;
 	color: #FAFAFA;
 }
-.graphs{
-    margin: 1%;
-}
 
 .graph{
     height: 56.25mm;
@@ -55,7 +52,7 @@ label{
     margin-left: 5%;
 }
 
-ul {
+.navbar ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -63,11 +60,11 @@ ul {
 	background-color: #333;
 }
 
-li {
+.navbar ul li {
 	float: left;
 }
 
-li a {
+.navbar ul li a {
 	display: block;
 	color: white;
 	text-align: center;
@@ -76,10 +73,35 @@ li a {
 }
 
 /* Change the link color to #111 (black) on hover */
-li a:hover {
+.navbar ul li a:hover {
 	background-color: #111;
 }
 
+
+.graphs {
+    list-style-type: none;
+    margin: 1%;
+    padding: 0;
+    overflow: hidden;
+    background-color: #111111;
+}
+
+.graphs li {
+    float: left;
+}
+
+.graphs li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.graphs li a:hover {
+    background-color: #111;
+}
 .active{
     background-color: #4F2D7F;
 }

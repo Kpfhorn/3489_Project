@@ -17,6 +17,10 @@ rt = function (app) {
         res.sendFile(__dirname + '/HTML/home.html');
     })
 
+    app.get('/profile', function (req, res) {
+        res.sendFile(__dirname + '/HTML/profile.html');
+    })
+
     app.get('/styles.css', function (req, res) {
         res.sendFile(__dirname + '/HTML/styles.css');
     })
