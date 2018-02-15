@@ -2,21 +2,12 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var router = require('./router');
 
-//Router Functions
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/HTML/index.html');
-})
+router.route(app);
 
-app.get('/styles.css', function (req, res) {
-    res.sendFile(__dirname + '/HTML/styles.css');
-})
-
-app.get('/home', function (req, res) {
-    res.sendFile(__dirname + '/HTML/home.html');
-})
 
 //HTTP Listener
-http.listen(80, function(){
-    console.log("listening on :80");
+http.listen(20345, function(){
+    console.log("listening on :20345");
 });
