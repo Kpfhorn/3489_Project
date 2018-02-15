@@ -28,6 +28,22 @@
 	font-size: 200%;
 	color: #FAFAFA;
 }
+.graphs{
+    margin: 1%;
+}
+
+.graph{
+    height: 56.25mm;
+    width: 100mm;
+    margin: 2mm;
+    background-color: #4F2D7F;
+}
+
+.graph .gr{
+    height: 95%;
+    width: 95%;
+    padding: 2mm;
+}
 
 body{
     background-color: #444444;
