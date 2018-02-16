@@ -25,8 +25,9 @@
 
 .header{
     top: 0;
-	font-size: 200%;
+	font-size: 300%;
 	color: #FAFAFA;
+    font-family: "SansSerif";
 }
 
 .graph{
@@ -50,9 +51,10 @@ label{
     font-size: 150%;
     color: #FAFAFA;
     margin-left: 5%;
+    font-family: "SansSerif";
 }
 
-.navbar ul {
+ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -60,48 +62,57 @@ label{
 	background-color: #333;
 }
 
-.navbar ul li {
+ul li {
 	float: left;
 }
 
-.navbar ul li a {
+ul li a {
 	display: block;
 	color: white;
 	text-align: center;
+    font-size: 150%;
 	padding: 14px 16px;
 	text-decoration: none;
+    font-family: "SansSerif";
 }
 
 /* Change the link color to #111 (black) on hover */
-.navbar ul li a:hover {
+ul li a:hover {
 	background-color: #111;
 }
 
 
 .graphs {
-    list-style-type: none;
     margin: 1%;
     padding: 0;
     overflow: hidden;
+    width: auto;
+    border-spacing: 3mm;
+}
+
+.graphs tr td {
+    padding: 2mm;
+    background-color: #4A2D7F;
+}
+.graphs tr .text{
+    width: 50%;
     background-color: #111111;
 }
 
-.graphs li {
-    float: left;
+.graphs tr .text .title{
+    font-size: 250% ;
+}
+.graphs tr .text label{
+    font-size: 150%;
 }
 
-.graphs li a {
+.graphs tr td img{
     display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 
-/* Change the link color to #111 (black) on hover */
-.graphs li a:hover {
-    background-color: #111;
-}
 .active{
     background-color: #4F2D7F;
 }
