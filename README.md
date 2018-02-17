@@ -1,2 +1,2 @@
-# 3489_Project
-Project for COSC 3489
+# 3489 Project UI Prototype
+UI Prototype for COSC 3489
