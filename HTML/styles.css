@@ -30,19 +30,6 @@
     font-family: "SansSerif";
 }
 
-.graph{
-    height: 56.25mm;
-    width: 100mm;
-    margin: 2mm;
-    background-color: #4F2D7F;
-}
-
-.graph .gr{
-    height: 95%;
-    width: 95%;
-    padding: 2mm;
-}
-
 body{
     background-color: #444444;
 }
@@ -54,6 +41,7 @@ label{
     font-family: "SansSerif";
 }
 
+/*Navigation bar*/
 ul {
 	list-style-type: none;
 	margin: 0;
@@ -81,7 +69,7 @@ ul li a:hover {
 	background-color: #111;
 }
 
-
+/*Stock Content*/
 .graphs {
     margin: 1%;
     padding: 0;
