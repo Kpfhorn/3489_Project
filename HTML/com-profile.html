@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel='stylesheet' href="/styles.css" type="text/css"/>
+    <title> Company Profile</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        $(function(){
+           var socket = io();
+           var url = window.location.href;
+           var id = url.slice(-5, -1);
+           console.log(id);
+           socket.emit('cfetch', id);
+           socket.on('cload', function(data){
+              console.log(data);
+              $('#logo').attr('src', data.logo);
+              $('#name').text(data.companyName);
+              $('#description').text(data.description);
+
+           });
+        });
+    </script>
+</head>
+<body>
+<div class="header">
+    Company Profile
+</div>
+<div class="navbar">
+    <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/profile">Profile</a></li>
+    </ul>
+</div>
+<div class="info">
+    <img id="logo"/><br>
+    <label class="info" id="name"></label><br>
+    <br>
+    <label class="info" id="description"></label>
+</div>
+</body>
+</html>
