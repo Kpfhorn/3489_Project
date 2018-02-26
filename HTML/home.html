@@ -11,6 +11,7 @@
             socket.emit('fetch', {'field':'#info1', 'ID':'GOOG'});
             socket.emit('fetch', {'field':'#info2', 'ID':'AAPL'});
             socket.emit('fetch', {'field':'#info3', 'ID':'TSLA'});
+            socket.emit('fetch', {'field':'#info4', 'ID':'MSFT'});
             socket.on('load', function(data){
                 console.log(data);
                 $(data.field).find('.title').text(data.name);
@@ -50,6 +51,15 @@
         <td><img src="./assets/sample.png"/></td>
     </tr>
     <tr id="info3">
+        <td class="text">
+            <label class="title"></label><br>
+            <a class="ID"></a><br>
+            <label>Current Value:</label>
+            <label class="price">$0.00</label>
+        </td>
+        <td class="image"><img src="./assets/sample.png"/></td>
+    </tr>
+    <tr id="info4">
         <td class="text">
             <label class="title"></label><br>
             <a class="ID"></a><br>
