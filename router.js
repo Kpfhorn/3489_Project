@@ -1,3 +1,6 @@
+//Handles routing of URLs
+
+
 var pageGen = require('./info-page-gen');
 
 module.exports = {

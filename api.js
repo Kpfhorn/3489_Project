@@ -1,4 +1,7 @@
+//Handles access to stock data
+
 var request = require('request');
+
 
 module.exports = {
     /**
