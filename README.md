@@ -14,5 +14,10 @@ Technologies for front-end
 - [Node.js](https://nodejs.org)
 - [Socket.io](https://socket.io)
 
+APIs in use 
+-
+- [IEX Developer Platform](https://iextrading.com/developer/docs/)
+- [Apache HttpClient](https://hc.apache.org/httpcomponents-client-ga/tutorial/html/)
+
 
 
