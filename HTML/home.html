@@ -15,7 +15,7 @@
             socket.on('load', function(data){
                 console.log(data);
                 $(data.field).find('.title').text(data.name);
-                $(data.field).find('.ID').text('(' + data.ID + ')').attr('href', '/company/'+data.ID + '/');
+                $(data.field).find('.ID').text('(' + data.ID + ')').attr('href', '/company/'+data.ID);
                 $(data.field).find('.price').text('$'+ data.price);
             });
         })

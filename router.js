@@ -24,7 +24,7 @@ rt = function (app, io) {
         res.sendFile(__dirname + '/HTML/profile.html');
     });
 
-    app.get('/company/*/', function(req, res){
+    app.get('/company/*', function(req, res){
         res.sendFile(__dirname + '/HTML/com-profile.html');
     });
 

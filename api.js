@@ -1,21 +1,50 @@
 var request = require('request');
 
 module.exports = {
-
+    /**
+     * Gets price data for a given stock
+     * @param ID ID of a stock
+     * @param callback
+     */
     getPrice: function(ID, callback){
         getPriceData(ID, callback);
     },
 
+    /**
+     * gets basic info for a given stock
+     * @param ID
+     * @param callback
+     */
     getInfo: function(ID, callback){
         getStockData(ID, callback);
     },
 
+    /**
+     * get detailed info for a given stock
+     * @param ID
+     * @param callback
+     */
     getDetailInfo: function(ID, callback){
         getGenericData(ID, 'company', callback);
     },
 
+    /**
+     * get a logo for a given stock
+     * @param ID
+     * @param callback
+     */
     getLogo: function(ID, callback){
         getGenericData(ID, 'logo', callback);
+    },
+
+    /**
+     * access an endpoint not currently supported
+     * @param ID
+     * @param endpoint
+     * @param callback
+     */
+    getGenericData: function(ID, endpoint, callback){
+        getGenericData(ID, endpoint, callback);
     }
 
 

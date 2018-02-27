@@ -9,7 +9,8 @@
         $(function(){
            var socket = io();
            var url = window.location.href;
-           var id = url.slice(-5, -1);
+           var temp = url.split('/');
+           var id = temp.pop();
            console.log(id);
            socket.emit('cfetch', id);
            socket.on('cload', function(data){
