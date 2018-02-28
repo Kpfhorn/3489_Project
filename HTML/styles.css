@@ -119,3 +119,44 @@ ul li a:hover {
 .active{
     background-color: #4F2D7F;
 }
+
+.search{
+    width: 100%;
+}
+
+#searchControls{
+
+}
+
+.search{
+    width: 100%;
+    font-family: SansSerif;
+    color: white;
+    font-size: 120%;
+}
+
+
+.search, th, td{
+    border: inset 1px #111111;
+}
+
+a:link{
+    color: white;
+}
+
+a:visited{
+    color: #DDDDDD;
+}
+
+a:hover{
+    color: #AAAAAA;
+}
+
+#symbols{
+    width: 40%;
+    background-color: #4A2D7F;
+}
+
+#names{
+    width: 60%;
+}

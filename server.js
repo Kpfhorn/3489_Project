@@ -4,10 +4,14 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var router = require('./router');
 var API = require('./api');
+var symbolsDB = require('./data');
 
 
+
+symbolsDB.start();
 
 router.route(app, io);
+app.use('/res', express.static(__dirname + "/HTML/resources"));
 
 io.on('connection', function(socket){
     socket.on('fetch', function(data){
@@ -26,6 +30,14 @@ io.on('connection', function(socket){
            })
         });
     });
+    socket.on('search', function(data){
+        console.log('search started');
+        console.log(data);
+
+        symbolsDB.search(data.type, data.text, function(results){
+            socket.emit('result', results);
+        });
+    })
 });
 
 

@@ -4,6 +4,10 @@ var request = require('request');
 
 
 module.exports = {
+
+    getSymbolList: function(callback){
+        getGeneric('/ref-data/symbols', callback);
+    },
     /**
      * Gets price data for a given stock
      * @param ID ID of a stock
@@ -50,8 +54,7 @@ module.exports = {
         getGenericData(ID, endpoint, callback);
     }
 
-
-}
+};
 
 var base = 'https://api.iextrading.com/1.0';
 
@@ -90,4 +93,11 @@ var getGenericData = function(company, endpoint, callback){
     request(uri, {json: true}, function(err, res, body){
             callback(body);
     });
-}
+};
+
+var getGeneric = function(endpoint, callback){
+    var uri = base + endpoint;
+    request(uri, {json: true}, function(err, res, body){
+        callback(body);
+    });
+};

@@ -1,19 +1,18 @@
 //Handles routing of URLs
 
-
-var pageGen = require('./info-page-gen');
+var express = require('express');
 
 module.exports = {
 
     route: function(app, io){
         rt(app, io);
-    },
-
-    lastID: ""
+    }
 
 };
 
-rt = function (app, io) {
+
+
+rt = function (app) {
     //Router Functions
     app.get('/', function (req, res) {
         res.sendFile(__dirname + '/HTML/index.html');
@@ -25,6 +24,10 @@ rt = function (app, io) {
 
     app.get('/profile', function (req, res) {
         res.sendFile(__dirname + '/HTML/profile.html');
+    });
+
+    app.get('/search', function (req, res) {
+        res.sendFile(__dirname + '/HTML/search.html');
     });
 
     app.get('/company/*', function(req, res){
