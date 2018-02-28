@@ -17,7 +17,7 @@
 
             socket.on('result', function(results){
                 var count = 1;
-                $('#results').val('');
+                $('#results').empty();
                 console.log(results);
                 results.forEach(function(item, index){
                     var field = 'result' + count;
@@ -57,12 +57,14 @@
 </div>
 <div class="display">
     <div id="searchControls">
-        <select id="option">
-            <option value="name">Name</option>
-            <option value="symbol">Symbol</option>
-        </select>
-        <input type="text" id="searchText"/>
-        <button id="search" onclick="search()">Search</button>
+        <form>
+            <select id="option">
+                <option value="name">Name</option>
+                <option value="symbol">Symbol</option>
+            </select>
+            <input type="text" id="searchText"/>
+            <button id="search" type="submit" formaction="javascript:search()">Search</button>
+        </form>
     </div>
     <table class="search">
         <colgroup>

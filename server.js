@@ -31,9 +31,6 @@ io.on('connection', function(socket){
         });
     });
     socket.on('search', function(data){
-        console.log('search started');
-        console.log(data);
-
         symbolsDB.search(data.type, data.text, function(results){
             socket.emit('result', results);
         });
