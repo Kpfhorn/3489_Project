@@ -6,8 +6,6 @@ var router = require('./router');
 var API = require('./api');
 var symbolsDB = require('./data');
 
-
-
 symbolsDB.start();
 
 router.route(app, io);
