@@ -5,23 +5,7 @@
     <title> Company Profile</title>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-        $(function(){
-           var socket = io();
-           var url = window.location.href;
-           var temp = url.split('/');
-           var id = temp.pop();
-           console.log(id);
-           socket.emit('cfetch', id);
-           socket.on('cload', function(data){
-              console.log(data);
-              $('#logo').attr('src', data.logo);
-              $('#name').text(data.companyName);
-              $('#description').text(data.description);
-
-           });
-        });
-    </script>
+    <script src="/res/js/com-profile.js"></script>
 </head>
 <body>
 <div class="header">
