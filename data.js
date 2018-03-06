@@ -39,7 +39,9 @@ var search = function(type, string, callback){
 
     });
     callback(results);
-}
+};
+
+
 
 
 

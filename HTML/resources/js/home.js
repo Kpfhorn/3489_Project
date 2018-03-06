@@ -21,4 +21,4 @@ $(function () {
         $(id).find('.ID').text('(' + data.ID + ')').attr('href', '/company/'+data.ID);
         $(id).find('.price').text('$'+ data.price);
     });
-})
+});

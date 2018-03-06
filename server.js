@@ -48,5 +48,3 @@ io.on('connection', function(socket){
 http.listen(20345, function(){
     console.log("listening on :20345");
 });
-
-

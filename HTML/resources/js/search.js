@@ -33,4 +33,4 @@ var search = function(){
     $('#searchText').val('');
 
 
-}
+};
