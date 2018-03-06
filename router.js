@@ -4,7 +4,7 @@ var express = require('express');
 
 module.exports = {
 
-    route: function(app, io){
+    start: function(app, io){
         rt(app, io);
     }
 

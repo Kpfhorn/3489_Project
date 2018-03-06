@@ -7,17 +7,21 @@ var API = require('./api');
 var symbolsDB = require('./data');
 
 symbolsDB.start();
+router.start(app, io);
 
-router.route(app, io);
 app.use('/res', express.static(__dirname + "/HTML/resources"));
 
 io.on('connection', function(socket){
+
+    //fetch event
     socket.on('fetch', function(data){
        API.getInfo(data.ID, function(dt){
            dt.field = data.field;
            socket.emit('load', dt);
        })
     });
+
+    //company fetch event
     socket.on('cfetch', function(data){
         var payload;
         API.getDetailInfo(data, function(body){
@@ -28,6 +32,8 @@ io.on('connection', function(socket){
            })
         });
     });
+
+    //search event
     socket.on('search', function(data){
         symbolsDB.search(data.type, data.text, function(results){
             socket.emit('result', results);
