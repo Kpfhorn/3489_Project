@@ -34,6 +34,10 @@ module.exports = {
     getDetailInfo: function(ID, callback){
         getGenericData(ID, 'company', callback);
     },
+    
+    getChartData: function(ID, callback){
+        getGenericData(ID, 'chart', callback);   
+    },
 
     /**
      * get a logo for a given stock
