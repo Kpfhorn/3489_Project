@@ -30,6 +30,10 @@ rt = function (app) {
         res.sendFile(__dirname + '/HTML/search.html');
     });
 
+    app.get('/sample', function (req, res) {
+        res.sendFile(__dirname + '/HTML/chart_sample.html');
+    });
+
     app.get('/company/*', function(req, res){
         res.sendFile(__dirname + '/HTML/com-profile.html');
     });

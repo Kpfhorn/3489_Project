@@ -33,6 +33,22 @@ io.on('connection', function(socket){
         });
     });
 
+    socket.on('chart', function(data){
+        console.log(data);
+        var payload = {};
+        payload.ID = data.ID;
+        payload.field = data.field;
+        API.getChartData(data.ID, function(body){
+           payload.prices = [];
+           payload.labels = [];
+           body.forEach(function(item, index){
+               payload.labels.push(item.label);
+               payload.prices.push(item.close);
+           });
+           socket.emit('lchart', payload);
+        });
+    });
+
     //search event
     socket.on('search', function(data){
         symbolsDB.search(data.type, data.text, function(results){
@@ -40,9 +56,6 @@ io.on('connection', function(socket){
         });
     })
 });
-
-
-
 
 //HTTP Listener
 http.listen(20345, function(){

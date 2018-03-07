@@ -49,6 +49,10 @@ label{
     font-family: "SansSerif";
 }
 
+canvas{
+    width: 50%;
+}
+
 /*Navigation bar*/
 ul {
 	list-style-type: none;
@@ -82,7 +86,7 @@ ul li a:hover {
     margin: 1%;
     padding: 0;
     overflow: hidden;
-    width: auto;
+    width: 100%;
     border-spacing: 3mm;
 }
 
