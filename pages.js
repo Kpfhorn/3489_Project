@@ -38,7 +38,7 @@ var getHomeContent = function(callback){
                 tmp = tmp.replace('cnvs', (canvas));
                 tmp = tmp.replace('ttl', dt.name);
                 tmp = tmp.replace('sym', '(' + item.ID + ')');
-                tmp = tmp.replace('clk', 'loadComProfile(' + item.ID + ')');
+                tmp = tmp.replace('clk', 'loadComProfile(\'' + item.ID + '\')');
                 tmp = tmp.replace('prc', dt.price);
                 content += tmp;
                 ctr++;

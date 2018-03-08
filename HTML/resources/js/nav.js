@@ -7,6 +7,7 @@ var loadPage = function(page, callback){
 }
 
 var loadComProfile = function(ID){
+    $('a').removeClass('active');
     loadPage('com', function(data){
         $('#contents').append(data);
         var id = ID;
@@ -21,7 +22,17 @@ var loadComProfile = function(ID){
     })
 };
 
+var loadProfile = function(){
+    $('a').removeClass('active');
+    $('#nav_profile').addClass('active');
+    loadPage('profile', function(data){
+        $('#contents').append(data);
+    })
+}
+
 var loadHome = function() {
+    $('a').removeClass('active');
+    $('#nav_home').addClass('active');
     loadPage('home', function(data){
         $('#contents').append(data);
 
@@ -49,6 +60,8 @@ var loadHome = function() {
 
 
 var loadSearch = function(){
+    $('a').removeClass('active');
+    $('#nav_search').addClass('active');
     loadPage('search', function(data) {
         $('#contents').append(data);
         var result_template = '';
