@@ -26,39 +26,18 @@ var loadHome = function() {
         $('#contents').append(data);
 
         socket.on('load', function(data){
-            console.log('dbg')
-
-            $.get('/res/home_table_template.html', function(dat, status){
-                var template = dat.toString();
-                console.log(data);
-                data.forEach(function(item, index){
-                    var tmp = template;
-                    var field = 'info' + index;
-                    var canvas = 'img' + index;
-                    var id = '#' + field;
-                    var send = {
-                        ID: item.ID,
-                        field: ('#' + canvas)
-                    };
-                    if(!$(id).length) {
-                        tmp = tmp.replace('temp', field);
-                        tmp = tmp.replace('cnvs', (canvas));
-                        $('#table').append(tmp);
-                        $(id).find('.title').text(item.name);
-                        $(id).find('.ID').text('(' + item.ID + ')');
-                        $(id).find('.ID').click(function () {
-                            loadComProfile(item.ID);
-                        })
-                        $(id).find('.price').text('$' + item.price);
-                        socket.emit('chart', send);
-                    }
-                })
+            $('#table').empty();
+            $('#table').append(data.content);
+            data.ids.forEach(function(item, index){
+                var canvas = 'img' + index;
+                var send = {
+                    ID: item.ID,
+                    field: ('#' + canvas)
+                };
+                socket.emit('chart', send);
             });
-
         });
-
-
-    })
+    });
     socket.emit('fetch',
         [{'ID':'GOOG'},
             {'ID':'AAPL'},

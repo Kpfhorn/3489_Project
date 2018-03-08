@@ -5,6 +5,7 @@ var io = require('socket.io')(http);
 var router = require('./router');
 var API = require('./api');
 var symbolsDB = require('./data');
+var contentGen = require('./pages');
 
 symbolsDB.start();
 router.start(app, io);
@@ -15,19 +16,14 @@ io.on('connection', function(socket){
 
     //fetch event
     socket.on('fetch', function(data){
-        var payload = []
-        data.forEach(function(item, index){
-            API.getInfo(item.ID, function(dt){
-                dt.num = index + 1;
-                payload.push(dt);
-                if(index === (data.length - 1)){
-                    console.log(data);
-                    console.log(payload);
-                    console.log('sending on index ' + index);
-                    socket.emit('load', payload);
-                }
-            });
-        })
+        contentGen.getDefaultContent(function(content){
+            console.log('executing');
+            var payload = {
+                content: content,
+                ids: data
+            }
+            socket.emit('load', payload);
+        });
     });
 
     //company fetch event
