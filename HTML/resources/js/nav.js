@@ -45,15 +45,21 @@ var loadHome = function() {
         $('#contents').append(data);
 
         socket.on('load', function(data){
-            $('#table').empty();
-            $('#table').append(data.content);
-            data.ids.forEach(function(item, index){
+            $('#companies').empty();
+            $('#companies').append(data.content);
+            var ctr = 1;
+            var payload = [];
+            data.ids.forEach(function(item, index, array){
                 var canvas = 'img' + index;
                 var send = {
                     ID: item.ID,
                     field: ('#' + canvas)
                 };
-                socket.emit('chart', send);
+                payload.push(send);
+                ctr++;
+                if(ctr === array.length){
+                    socket.emit('chart', payload);
+                }
             });
         });
     });
@@ -112,21 +118,22 @@ var search = function(){
 };
 
 socket.on('lchart', function(payload){
-    console.log(payload.field);
-    var ctx = $(payload.field);
-    var chart = new Chart(ctx, {
+    console.log(payload[0].field);
+    var ctx = $(payload[0].field);
+    var dataset = {
+        label: '',
+        borderColor: '#FFFFFF',
+        fill: false,
+        data: ''
+    };
+    var myChart = new Chart(ctx, {
         // The type of chart we want to create
         type: 'line',
 
         // The data for our dataset
         data: {
-            labels: payload.labels,
-            datasets: [{
-                label: payload.ID,
-                borderColor: '#FFFFFF',
-                fill: false,
-                data: payload.prices,
-            }]
+            labels: payload[0].labels,
+            datasets: []
         },
 
         // Configuration options go here
@@ -151,5 +158,10 @@ socket.on('lchart', function(payload){
             }
 
         }
+    });
+    payload.forEach(function(item, index, array){
+        var data = dataset;
+        data.label = item.label;
+        data.data = item.prices;
     });
 })

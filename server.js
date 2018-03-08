@@ -40,17 +40,26 @@ io.on('connection', function(socket){
 
     /**Event to get chart data**/
     socket.on('chart', function(data){
-        var payload = {};
-        payload.ID = data.ID;
-        payload.field = data.field;
-        API.getChartData(data.ID, function(body){
-           payload.prices = [];
-           payload.labels = [];
-           body.forEach(function(item){
-               payload.labels.push(item.label);
-               payload.prices.push(item.close);
-           });
-           socket.emit('lchart', payload);
+        var payload = [];
+        var ctr = 1;
+        data.forEach(function(item, index, array){
+            var com = {};
+            com.ID = item.ID;
+            com.field = item.field;
+            API.getChartData(data.ID, function(body){
+                com.prices = [];
+                com.labels = [];
+                body.forEach(function(item){
+                    com.labels.push(item.label);
+                    com.prices.push(item.close);
+                });
+                payload.push(com);
+                ctr++;
+                if(ctr === array.length){
+                    socket.emit('lchart', payload);
+                }
+            });
+
         });
     });
 
