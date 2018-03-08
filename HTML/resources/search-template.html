@@ -1,0 +1,23 @@
+<div id="searchControls">
+    <form>
+        <select id="option">
+            <option value="name">Name</option>
+            <option value="symbol">Symbol</option>
+        </select>
+        <input type="text" id="searchText"/>
+        <button id="search" type="submit" formaction="javascript:search()">Search</button>
+    </form>
+</div>
+<table class="search">
+    <colgroup>
+        <col id="symbols">
+        <col id="names">
+    </colgroup>
+    <tr>
+        <th>Symbol</th>
+        <th>Name</th>
+    </tr>
+    <tbody id="results">
+
+    </tbody>
+</table>

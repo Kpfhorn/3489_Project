@@ -15,10 +15,19 @@ io.on('connection', function(socket){
 
     //fetch event
     socket.on('fetch', function(data){
-       API.getInfo(data.ID, function(dt){
-           dt.field = data.field;
-           socket.emit('load', dt);
-       })
+        var payload = []
+        data.forEach(function(item, index){
+            API.getInfo(item.ID, function(dt){
+                dt.num = index + 1;
+                payload.push(dt);
+                if(index === (data.length - 1)){
+                    console.log(data);
+                    console.log(payload);
+                    console.log('sending on index ' + index);
+                    socket.emit('load', payload);
+                }
+            });
+        })
     });
 
     //company fetch event
