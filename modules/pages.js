@@ -1,13 +1,16 @@
 var fs = require('fs');
 var API = require('./api');
+
 module.exports = {
+
+    /**get default Home page content**/
     getDefaultContent: function (callback) {
         getHomeContent(callback);
     }
 };
 
 var getPage = function(page, callback){
-    var uri = __dirname + '/HTML/resources/' + page + '-template.html';
+    var uri = __dirname + '/../HTML/resources/' + page + '-template.html';
     fs.readFile(uri, function(err, data){
         callback(data);
     })
@@ -20,7 +23,7 @@ var getHomeContent = function(callback){
         {'ID':'TSLA'},
         {'ID':'MSFT'}
     ];
-    var uri = __dirname + '/HTML/resources/home_table_template.html';
+    var uri = __dirname + '/../HTML/resources/home_table_template.html';
     var template = '';
     fs.readFile(uri, 'utf-8',function(err, data){
         template = data;
@@ -33,7 +36,6 @@ var getHomeContent = function(callback){
             var id = '#' + field;
 
             API.getInfo(item.ID, function(dt){
-                console.log(dt);
                 tmp = tmp.replace('temp', field);
                 tmp = tmp.replace('cnvs', (canvas));
                 tmp = tmp.replace('ttl', dt.name);
@@ -43,7 +45,6 @@ var getHomeContent = function(callback){
                 content += tmp;
                 ctr++;
                 if (ctr === array.length) {
-                    console.log(content);
                     callback(content);
                 }
             });

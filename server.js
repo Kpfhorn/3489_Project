@@ -2,22 +2,22 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var router = require('./router');
-var API = require('./api');
-var symbolsDB = require('./data');
-var contentGen = require('./pages');
+var router = require('./modules/router');
+var API = require('./modules/api');
+var contentGen = require('./modules/pages');
 
-symbolsDB.start();
-router.start(app, io);
+API.symbolDB.start();
+router.start(app, __dirname);
 
+/**static path for resources**/
 app.use('/res', express.static(__dirname + "/HTML/resources"));
 
+/**socket handlers**/
 io.on('connection', function(socket){
 
-    //fetch event
+    /**fetch event**/
     socket.on('fetch', function(data){
         contentGen.getDefaultContent(function(content){
-            console.log('executing');
             var payload = {
                 content: content,
                 ids: data
@@ -26,7 +26,7 @@ io.on('connection', function(socket){
         });
     });
 
-    //company fetch event
+    /**company fetch event**/
     socket.on('cfetch', function(data){
         var payload;
         API.getDetailInfo(data, function(body){
@@ -38,15 +38,15 @@ io.on('connection', function(socket){
         });
     });
 
+    /**Event to get chart data**/
     socket.on('chart', function(data){
-        console.log(data);
         var payload = {};
         payload.ID = data.ID;
         payload.field = data.field;
         API.getChartData(data.ID, function(body){
            payload.prices = [];
            payload.labels = [];
-           body.forEach(function(item, index){
+           body.forEach(function(item){
                payload.labels.push(item.label);
                payload.prices.push(item.close);
            });
@@ -54,15 +54,15 @@ io.on('connection', function(socket){
         });
     });
 
-    //search event
+    /**search event**/
     socket.on('search', function(data){
-        symbolsDB.search(data.type, data.text, function(results){
+        API.symbolDB.search(data.type, data.text, function(results){
             socket.emit('result', results);
         });
     })
 });
 
-//HTTP Listener
+/**HTTP Listener**/
 http.listen(20345, function(){
     console.log("listening on :20345");
 });

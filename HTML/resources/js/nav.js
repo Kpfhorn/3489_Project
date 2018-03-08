@@ -1,12 +1,16 @@
+var socket = io();
+
 var loadPage = function(page, callback){
     $.get('/res/' + page + '-template.html', function(data, status){
         console.log(status);
         $('#contents').empty();
         callback(data);
     })
-}
+};
 
 var loadComProfile = function(ID){
+    $('.header').empty();
+    $('.header').append('Company Profile');
     $('a').removeClass('active');
     loadPage('com', function(data){
         $('#contents').append(data);
@@ -23,6 +27,8 @@ var loadComProfile = function(ID){
 };
 
 var loadProfile = function(){
+    $('.header').empty();
+    $('.header').append('Profile');
     $('a').removeClass('active');
     $('#nav_profile').addClass('active');
     loadPage('profile', function(data){
@@ -31,6 +37,8 @@ var loadProfile = function(){
 }
 
 var loadHome = function() {
+    $('.header').empty();
+    $('.header').append('Home');
     $('a').removeClass('active');
     $('#nav_home').addClass('active');
     loadPage('home', function(data){
@@ -60,6 +68,8 @@ var loadHome = function() {
 
 
 var loadSearch = function(){
+    $('.header').empty();
+    $('.header').append('Search');
     $('a').removeClass('active');
     $('#nav_search').addClass('active');
     loadPage('search', function(data) {
@@ -100,3 +110,46 @@ var search = function(){
     socket.emit('search', data);
     $('#searchText').val('');
 };
+
+socket.on('lchart', function(payload){
+    console.log(payload.field);
+    var ctx = $(payload.field);
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+            labels: payload.labels,
+            datasets: [{
+                label: payload.ID,
+                borderColor: '#FFFFFF',
+                fill: false,
+                data: payload.prices,
+            }]
+        },
+
+        // Configuration options go here
+        options: {
+            legend: {
+                display: true,
+                labels: {
+                    fontColor: '#FFFFFF'
+                }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: '#FFFFFF'
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: '#FFFFFF'
+                    }
+                }]
+            }
+
+        }
+    });
+})

@@ -1,13 +1,33 @@
 //Handles access to stock data
 
 var request = require('request');
-
+var symbols = '';
+var isStarted = false;
 
 module.exports = {
 
-    getSymbolList: function(callback){
-        getGeneric('/ref-data/symbols', callback);
+    /**
+     * Handles access to symbol list
+     */
+    symbolDB: {
+        start: function(){
+            fetchSymbolData();
+            isStarted = true;
+        },
+
+        /**
+         * Search for a symbol or company
+         * @param type type of search (symbol or company name)
+         * @param string search string
+         * @param callback
+         */
+        search: function(type, string, callback){
+            if(isStarted){
+                search(type, string, callback);
+            }
+        }
     },
+
     /**
      * Gets price data for a given stock
      * @param ID ID of a stock
@@ -34,7 +54,12 @@ module.exports = {
     getDetailInfo: function(ID, callback){
         getGenericData(ID, 'company', callback);
     },
-    
+
+    /**
+     * get data to generate a chart
+     * @param ID
+     * @param callback
+     */
     getChartData: function(ID, callback){
         getGenericData(ID, 'chart', callback);   
     },
@@ -90,7 +115,7 @@ var getPriceData = function(company, callback){
         callback(data);
     });
 
-}
+};
 
 var getGenericData = function(company, endpoint, callback){
     var uri = base + '/stock/' + company +'/' + endpoint;
@@ -104,5 +129,32 @@ var getGeneric = function(endpoint, callback){
     request(uri, {json: true}, function(err, res, body){
         callback(body);
     });
+};
+
+var fetchSymbolData = function(){
+    initSymbolList(function(list){
+        symbols = list;
+    });
+};
+
+initSymbolList = function(callback){
+    getGeneric('/ref-data/symbols', callback);
+};
+
+var search = function(type, string, callback){
+    var results = [];
+    symbols.forEach(function(item, index){
+        if(type === 'name'){
+            if(item.name.toLowerCase().includes(string.toLowerCase())){
+                results.push(item);
+            }
+        }else if(type === 'symbol'){
+            if(item.symbol.toLowerCase().includes(string.toLowerCase())){
+                results.push(item);
+            }
+        }
+
+    });
+    callback(results);
 };
 
