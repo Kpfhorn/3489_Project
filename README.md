@@ -1,4 +1,4 @@
-# 3489_Project (Development Branch)
+# 3489 Project
 This is the development branch for a project for the class COSC 3489<br>
 
 Technologies for front-end
