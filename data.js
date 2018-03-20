@@ -1,7 +1,7 @@
 //Handles symbol list searches and maintenance
-var API = require('./api');
-var symbols = '';
-var isStarted = false;
+const API = require('./api');
+let symbols = '';
+let isStarted = false;
 
 module.exports = {
 
@@ -18,15 +18,15 @@ module.exports = {
 
 };
 
-var fetchSymbolData = function(){
+const fetchSymbolData = function(){
     API.getSymbolList(function(list){
         symbols = list;
     });
 };
 
-var search = function(type, string, callback){
-    var results = [];
-    symbols.forEach(function(item, index){
+const search = function(type, string, callback){
+    let results = [];
+    symbols.forEach(function(item){
         if(type === 'name'){
             if(item.name.toLowerCase().includes(string.toLowerCase())){
                 results.push(item);

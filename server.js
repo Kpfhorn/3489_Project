@@ -1,10 +1,10 @@
-var express = require('express');
-var app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var router = require('./router');
-var API = require('./api');
-var symbolsDB = require('./data');
+const express = require('express');
+const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+const router = require('./router');
+const API = require('./api');
+const symbolsDB = require('./data');
 
 symbolsDB.start();
 router.start(app, io);
@@ -23,7 +23,7 @@ io.on('connection', function(socket){
 
     //company fetch event
     socket.on('cfetch', function(data){
-        var payload;
+        let payload;
         API.getDetailInfo(data, function(body){
            payload = body;
            API.getLogo(data, function(body){
@@ -34,14 +34,13 @@ io.on('connection', function(socket){
     });
 
     socket.on('chart', function(data){
-        console.log(data);
-        var payload = {};
+        let payload = {};
         payload.ID = data.ID;
         payload.field = data.field;
         API.getChartData(data.ID, function(body){
            payload.prices = [];
            payload.labels = [];
-           body.forEach(function(item, index){
+           body.forEach(function(item){
                payload.labels.push(item.label);
                payload.prices.push(item.close);
            });

@@ -1,7 +1,5 @@
 //Handles routing of URLs
 
-var express = require('express');
-
 module.exports = {
 
     start: function(app, io){
@@ -40,10 +38,6 @@ rt = function (app) {
 
     app.get('/styles.css', function (req, res) {
         res.sendFile(__dirname + '/HTML/styles.css');
-    });
-
-    app.get('/assets/sample.png', function (req, res) {
-        res.sendFile(__dirname + '/assets/sample.png');
     });
 
 };

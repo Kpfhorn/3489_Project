@@ -1,20 +1,12 @@
 //Handles access to stock data
 
-var request = require('request');
+const request = require('request');
 
 
 module.exports = {
 
     getSymbolList: function(callback){
         getGeneric('/ref-data/symbols', callback);
-    },
-    /**
-     * Gets price data for a given stock
-     * @param ID ID of a stock
-     * @param callback
-     */
-    getPrice: function(ID, callback){
-        getPriceData(ID, callback);
     },
 
     /**
@@ -60,10 +52,10 @@ module.exports = {
 
 };
 
-var base = 'https://api.iextrading.com/1.0';
+const base = 'https://api.iextrading.com/1.0';
 
-var getStockData = function(company, callback){
-    var info = {
+const getStockData = function(company, callback){
+    let info = {
         ID: "",
         name: "",
         price: 0
@@ -79,9 +71,9 @@ var getStockData = function(company, callback){
     });
 };
 
-var getPriceData = function(company, callback){
-    var uri = base + '/stock/' + company + '/price';
-    var data = {
+const getPriceData = function(company, callback){
+    const uri = base + '/stock/' + company + '/price';
+    let data = {
         ID: company,
         price: 0
     };
@@ -90,17 +82,17 @@ var getPriceData = function(company, callback){
         callback(data);
     });
 
-}
+};
 
-var getGenericData = function(company, endpoint, callback){
-    var uri = base + '/stock/' + company +'/' + endpoint;
+const getGenericData = function(company, endpoint, callback){
+    const uri = base + '/stock/' + company +'/' + endpoint;
     request(uri, {json: true}, function(err, res, body){
             callback(body);
     });
 };
 
-var getGeneric = function(endpoint, callback){
-    var uri = base + endpoint;
+const getGeneric = function(endpoint, callback){
+    const uri = base + endpoint;
     request(uri, {json: true}, function(err, res, body){
         callback(body);
     });
