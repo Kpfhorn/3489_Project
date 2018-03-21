@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel='stylesheet' href="styles.css" type="text/css"/>
+    <title>Search</title>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/res/js/search.js"></script>
+</head>
+<body>
+<div class="header">
+    Search
+</div>
+<div class="navbar">
+    <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/search" class="active">Search</a></li>
+    </ul>
+</div>
+<div class="display">
+    <div id="searchControls">
+        <form>
+            <select id="option">
+                <option value="name">Name</option>
+                <option value="symbol">Symbol</option>
+            </select>
+            <input type="text" id="searchText"/>
+            <button id="search" type="submit" formaction="javascript:search()">Search</button>
+        </form>
+    </div>
+    <table class="search">
+        <colgroup>
+            <col id="symbols">
+            <col id="names">
+        </colgroup>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+        </tr>
+        <tbody id="results">
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
