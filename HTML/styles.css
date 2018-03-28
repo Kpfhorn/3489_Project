@@ -164,3 +164,24 @@ a:hover{
 #names{
     width: 60%;
 }
+
+#profile{
+    margin: 1%;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    border-spacing: 3mm;
+}
+
+#profile td{
+    border: none;
+}
+
+#buttons td{
+    padding: 2%;
+}
+
+#buttons td button{
+    font-family: "Arial";
+    width: 40%;
+}

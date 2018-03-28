@@ -1,9 +1,12 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <link rel='stylesheet' href="./styles.css" type="text/css"/>
+    <link rel='stylesheet' href="styles.css" type="text/css"/>
     <title>Profile</title>
+    <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="/res/js/profile.js"></script>
 </head>
 <body>
 <div class="header">
@@ -17,10 +20,31 @@
     </ul>
 </div>
 <div class="info">
-    <label>Name</label><br>
-    <label class="info" id="name"></label><br>
-    <label>Email Address</label><br>
-    <label class="info" id="email"></label>
+    <table id="profile">
+        <tr>
+            <td>
+                <label>Name:</label>
+            </td>
+            <td>
+                <label class="info" id="name">John Smith</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Email Address:</label>
+            </td>
+            <td>
+                <label class="info" id="email">jsmith@example.com</label>
+            </td>
+        </tr>
+        <tr id="buttons">
+            <td>
+                <button  id="editInfo" onclick="">Edit User Info</button>
+                <button  id="stockSelect"  onclick="openSelector()">Edit Stock Profile</button>
+            </td>
+        </tr>
+    </table>
+    <canvas id="profileChart"></canvas>
 </div>
 </body>
 </html>
