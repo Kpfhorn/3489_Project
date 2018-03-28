@@ -29,12 +29,11 @@ io.on('connection', function(socket){
            API.getLogo(data, function(body){
                payload.logo = body.url;
                socket.emit('cload', payload);
-           })
+           });
         });
     });
 
     socket.on('chart', function(data){
-        console.log(data);
         var payload = {};
         payload.ID = data.ID;
         payload.field = data.field;
