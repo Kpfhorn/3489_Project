@@ -16,7 +16,7 @@ rt = function (app) {
     //Router Functions
 
     app.post('/login', function(req, res){
-
+        console.log('reeeeee');
     });
 
     app.post('/register', function(req, res){
