@@ -14,6 +14,15 @@ module.exports = {
 
 rt = function (app) {
     //Router Functions
+
+    app.post('/login', function(req, res){
+
+    });
+
+    app.post('/register', function(req, res){
+
+    });
+
     app.get('/', function (req, res) {
         res.sendFile(__dirname + '/HTML/index.html');
     });

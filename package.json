@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/Kpfhorn/3489_Project#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.16.2",
+    "jsonwebtoken": "^8.2.0",
     "plotly": "^1.0.6",
     "request": "^2.83.0",
     "socket.io": "^2.0.4"
