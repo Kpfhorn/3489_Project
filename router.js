@@ -1,6 +1,8 @@
 //Handles routing of URLs
 
 var express = require('express');
+var bodyParser = require('body-parser');
+var User = require('./user');
 
 module.exports = {
 
@@ -10,13 +12,22 @@ module.exports = {
 
 };
 
-
-
 rt = function (app) {
     //Router Functions
 
+    //app.use(express.bodyParser());
+
+    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.json());
+
     app.post('/login', function(req, res){
-        console.log('reeeeee');
+        var email = req.body.email;
+        var password = req.body.password;
+        User.getUser(email, function(user){
+            if(user.phash === password){
+                console.log('login successful');
+            }
+        })
     });
 
     app.post('/register', function(req, res){
