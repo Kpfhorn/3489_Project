@@ -48,7 +48,7 @@
             </label>
             <br />
             <input id="editemail" class="editpro"></input><br>
-            <input type="button" name="set_Value" id="set_Email" value="Edit Name" onclick="setEmail()" />
+            <input type="button" name="set_Value" id="set_Email" value="Edit Email" onclick="setEmail()" />
             <script>
                 function setEmail() {
                     var h = document.getElementById("editemail");
@@ -70,13 +70,18 @@
             </label>
             <br />
             <input id="changepassword"  class="editpro" type="password"></input><br>
-            <input type="button" name="set_Value" id="set_Pass" value="Edit Name" onclick="setPass()" />
+            <input type="button" name="set_Value" id="set_Pass" value="Edit Password" onclick="setPass()" />
             <script>
                 function setPass() {
-                    var h = document.getElementById("changepassword");
-                    var defaultVal = h.defaultValue;
-                    var currentVal = h.value;
-                    document.getElementById("Password").innerText=currentVal;
+                    var p = document.getElementById("changepassword");
+                    var defaultVal = p.defaultValue;
+                    var currentVal = p.value;
+                    if (p.value==""){
+
+                    }
+                    else {
+                        document.getElementById("Password").innerText = currentVal;
+                    }
 
                 }
 
