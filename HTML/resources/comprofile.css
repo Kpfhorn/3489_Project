@@ -1,17 +1,24 @@
 #header2 label{
-    display: block;
     font-size: 400%;
-    text-align: left;
+    margin: 1mm;
 }
 #information label{
-    display: block;
     font-size: 150%;
-    text-align: left;
+    margin:auto;
+}
+
+#header2 #name{
+    font-size: 400%;
+}
+
+#header2 #price{
+    font-size: 300%;
 }
 
 table {
     margin-left: auto;
     margin-right: auto;
+    width: 60%;
 }
 table, th, td {
     border-color:black;
@@ -31,11 +38,8 @@ table#t01 th {
     background-color: black;
     color: white;
 }
-#img{
+#canvas{
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    height: 25%;
-
+    margin:auto;
+    width: 60%;
 }

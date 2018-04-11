@@ -3,19 +3,21 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var User = require('./user');
+const cookieParser = require('cookie-parser');
+
+const LOGINS = [];
 
 module.exports = {
 
-    start: function(app, io){
-        rt(app, io);
+    start: function(app, API){
+        rt(app, API);
     }
 
 };
 
-rt = function (app) {
+rt = function (app, API) {
     //Router Functions
 
-    //app.use(express.bodyParser());
 
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
@@ -26,12 +28,45 @@ rt = function (app) {
         User.getUser(email, function(user){
             if(user.phash === password){
                 console.log('login successful');
+                res.cookie('email', email);
+                res.send('success');
+
             }
         })
     });
 
     app.post('/register', function(req, res){
 
+    });
+
+    app.post('/api/priceData', function(req, res){
+        var id = req.body.id;
+        let dates  = [];
+        API.getChartData(id, function(data){
+            for(let i = 0; i < 6; i++){
+                let day = data.pop();
+                dates.push(day);
+            }
+            res.send(dates);
+        });
+    });
+
+    app.post('/api/price', function(req, res){
+        let id = req.body.id;
+        API.getPrice(id, function(data){
+            res.send(data);
+        })
+    });
+
+    app.post('/api/user', function(req, res){
+        let email = req.body.email;
+        User.getUser(email, function(user){
+            let payload = {
+                name: user.name,
+                email: user.email
+            }
+            res.send(payload);
+        })
     });
 
     app.get('/', function (req, res) {
@@ -65,5 +100,6 @@ rt = function (app) {
     app.get('/assets/sample.png', function (req, res) {
         res.sendFile(__dirname + '/assets/sample.png');
     });
+
 
 };

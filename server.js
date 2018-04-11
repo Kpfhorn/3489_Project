@@ -1,13 +1,15 @@
-var express = require('express');
-var app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var router = require('./router');
-var API = require('./api');
-var symbolsDB = require('./data');
+const express = require('express');
+const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+const router = require('./router');
+const API = require('./api');
+const symbolsDB = require('./data');
 
 symbolsDB.start();
-router.start(app, io);
+router.start(app, API);
+
+
 
 app.use('/res', express.static(__dirname + "/HTML/resources"));
 

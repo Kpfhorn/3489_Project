@@ -10,7 +10,7 @@ class User {
     }
 }
 
-const def = new User('John', 'john@example.com', 'password');
+const def = new User('John Smith', 'john@example.com', 'password');
 USERS.push(def);
 
 module.exports = {

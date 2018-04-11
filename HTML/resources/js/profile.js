@@ -1,9 +1,30 @@
+const loadInfo = function(){
+    let cookies = document.cookie;
+    let cookie = cookies.split('=');
+    let email = cookie[1].replace('%40', '@');
+    let inf = {
+        email: email
+    };
+    let payload = {
+        data: JSON.stringify(inf),
+        contentType: 'application/json',
+        type: 'POST',
+        url: '/api/user',
+        success: function(dt){
+            $('#name').text(dt.name);
+            $('#email').text(dt.email);
+        }
+    };
+    $.ajax(payload);
+}
+
 $(function (){
     const socket = io();
     var send = {
         ID: 'AAPL',
         field: '#profileChart'
     };
+    loadInfo();
     socket.emit('chart', send);
     socket.on('lchart', function(payload){
         console.log(payload.field);

@@ -13,6 +13,9 @@ var login = function(){
         url: '/login',
         success: function(dt){
             console.log(dt);
+            if(dt.toString() === 'success'){
+                window.location.href = '/home';
+            }
         }
     };
     $.ajax(payload);
