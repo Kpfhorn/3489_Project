@@ -168,3 +168,19 @@ a:hover{
 #buttons td button{
     width: 40%;
 }
+#EditInfo{
+    color: white;
+    font-family: "Arial";
+    font-size: 30px;
+
+}
+#changepassword{
+    height: 70%;
+    width: 10%;
+}
+.editpro{
+    height: 10%;
+    width: 20%;
+    font-size: 100%;
+
+}
