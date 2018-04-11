@@ -12,12 +12,15 @@
 	</div>
 
     <div class="input">
+        <form>
 		<label>Email</label><br>
         <input id="email" class="in"></input><br>
 		<label>Password</label><br>
 		<input id="password" class="in" type="password"></input><br>
-		<button id="login" class="button" onclick="login()">Login</button>
-		<button id="signup" class="button">Sign Up</button>
+		<button id="login" type="submit" class="button" formaction="javascript:login()">Login</button>
+
+        </form>
+        <button id="signup" class="button" onclick="window.location.href='/register'">Sign Up</button>
     </div>
     </body>
 </html>

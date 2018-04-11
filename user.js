@@ -1,6 +1,8 @@
+const fs = require('fs');
 
+const PATH = './HTML/USERS/users'
 
-const USERS = [];
+let USERS = '';
 
 class User {
     constructor(name, email, phash){
@@ -10,14 +12,25 @@ class User {
     }
 }
 
-const def = new User('John Smith', 'john@example.com', 'password');
-USERS.push(def);
+fs.readFile(PATH, 'utf-8', function(err, data){
+   USERS = JSON.parse(data);
+});
+
+
 
 module.exports = {
 
-    addUser: function(name, email, phash){
+    addUser: function(name, email, phash, callback){
         let usr = new User(name, email, phash);
-        USERS.push(usr);
+        checkForUser(email, function(item){
+            if (item.toString() === 'fail'){
+                USERS.push(usr);
+                dumpUsers();
+                callback('success');
+            }else callback('user exists');
+        })
+
+
     },
 
     getUser: function(email, callback){
@@ -26,5 +39,19 @@ module.exports = {
                 callback(item);
             }
         })
-    }
+    },
+
+
 };
+const checkForUser = function(email, callback){
+    USERS.forEach(function(item){
+        if(item.email === email){
+            callback(item);
+        }
+    });
+    callback('fail')
+};
+
+const dumpUsers = function(){
+    fs.writeFile(PATH, JSON.stringify(USERS), 'utf-8');
+}
