@@ -93,6 +93,9 @@ rt = function (app, API) {
     app.get('/selector', function (req, res) {
         res.sendFile(__dirname + '/HTML/stock-selector.html');
     });
+    app.get('/EditProfile', function (req, res) {
+        res.sendFile(__dirname + '/HTML/EditProfile.html');
+    });
 
     app.get('/register', function(req, res){
         res.sendFile(__dirname + '/HTML/register.html');
