@@ -134,6 +134,9 @@ a:link{
     color: white;
 }
 
+li a:visited{
+    color: white;
+}
 a:visited{
     color: #DDDDDD;
 }
