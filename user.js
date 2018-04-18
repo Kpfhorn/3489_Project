@@ -20,6 +20,8 @@ fs.readFile(PATH, 'utf-8', function(err, data){
 
 module.exports = {
 
+    User: User,
+
     addUser: function(name, email, phash, callback){
         let usr = new User(name, email, phash);
         checkForUser(email, function(item){
@@ -39,7 +41,7 @@ module.exports = {
                 callback(item);
             }
         })
-    },
+    }
 
 
 };
