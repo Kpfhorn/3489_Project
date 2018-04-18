@@ -1,11 +1,24 @@
 var socket = io();
+
+var search = function(){
+    var txt = $('#searchText').val();
+    var tp = $('#option').val();
+    var data = {
+        type: tp,
+        text: txt
+    };
+    socket.emit('search', data);
+    $('#searchText').val('');
+
+
+};
 $(function(){
 
     var result_template = '';
     $.get('/res/search_result_template.html', function(data, status){
         result_template = data.toString();
     });
-
+    search();
 
     socket.on('result', function(results){
         var count = 1;
@@ -22,15 +35,4 @@ $(function(){
         });
     });
 });
-var search = function(){
-    var txt = $('#searchText').val();
-    var tp = $('#option').val();
-    var data = {
-        type: tp,
-        text: txt
-    };
-    socket.emit('search', data);
-    $('#searchText').val('');
 
-
-};

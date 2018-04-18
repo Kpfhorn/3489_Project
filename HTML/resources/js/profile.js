@@ -39,6 +39,7 @@ $(function (){
                 datasets: [{
                     label: payload.ID,
                     borderColor: '#FFFFFF',
+                    lineTension: 0,
                     fill: false,
                     data: payload.prices
                 }]

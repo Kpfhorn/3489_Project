@@ -81,6 +81,7 @@ $(function(){
                     label: payload.ID,
                     borderColor: '#FFFFFF',
                     fill: false,
+                    lineTension: 0,
                     data: payload.prices,
                 }]
             },

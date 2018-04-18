@@ -36,7 +36,7 @@ module.exports = {
     },
     
     getChartData: function(ID, callback){
-        getGenericData(ID, 'chart', callback);   
+        getGenericData(ID, 'chart', callback);
     },
 
     /**
