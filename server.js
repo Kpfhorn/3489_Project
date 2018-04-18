@@ -59,6 +59,6 @@ io.on('connection', function(socket){
 });
 
 //HTTP Listener
-http.listen(21345, function(){
+http.listen(20345, function(){
     console.log("listening on :20345");
 });
