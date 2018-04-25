@@ -21,11 +21,14 @@ $(function () {
         }
         tmp = tmp.replace('temp', field);
         tmp = tmp.replace('cnvs', (canvas));
+        tmp = tmp.replace('ttl', data.ID + '_ttl');
+        tmp = tmp.replace('ID', data.ID + '_ID');
+        tmp = tmp.replace('prc', data.ID + '_prc');
         count++;
-        $('#table').append(tmp);
-        $(id).find('.title').text(data.name);
-        $(id).find('.ID').text('(' + data.ID + ')').attr('href', '/company/'+data.ID);
-        $(id).find('.price').text('$'+ data.price);
+        $('#home_table').append(tmp);
+        $('#' + data.ID + '_ttl').text(data.name);
+        $('#' + data.ID + '_IDD').text('(' + data.ID + ')').attr('href', '/company/'+data.ID);
+        $('#' + data.ID + '_prc').text('$'+ data.price);
         socket.emit('chart', send);
 
     });
@@ -42,6 +45,7 @@ $(function () {
                 datasets: [{
                     label: payload.ID,
                     borderColor: '#FFFFFF',
+                    lineTension: 0,
                     fill: false,
                     data: payload.prices,
                 }]

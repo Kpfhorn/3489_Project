@@ -36,7 +36,12 @@ rt = function (app, API) {
     });
 
     app.post('/register', function(req, res){
-
+        let name = req.body.firstName + ' ' + req.body.lastName;
+        User.addUser(name, req.body.email, req.body.password, function(item){
+            if(item.toString() === 'success'){
+                res.send('success');
+            }else(res.send('user already exists'));
+        })
     });
 
     app.post('/api/priceData', function(req, res){
@@ -87,6 +92,13 @@ rt = function (app, API) {
 
     app.get('/selector', function (req, res) {
         res.sendFile(__dirname + '/HTML/stock-selector.html');
+    });
+    app.get('/EditProfile', function (req, res) {
+        res.sendFile(__dirname + '/HTML/EditProfile.html');
+    });
+
+    app.get('/register', function(req, res){
+        res.sendFile(__dirname + '/HTML/register.html');
     });
 
     app.get('/company/*', function(req, res){

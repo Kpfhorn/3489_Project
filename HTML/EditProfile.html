@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel='stylesheet' href="styles.css" type="text/css"/>
+    <title>Home</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+</head>
+<body>
+<div class="header">
+    Edit Profile
+</div>
+<div class="navbar">
+    <ul>
+        <li><a href="/home" >Home</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/search">Search</a></li>
+    </ul>
+
+    <div id="EditInfo">
+        Name:
+        <label id="Name">
+            John
+        </label>
+        <br>
+        <input id="editname" class="editpro"/><br>
+        <input type="button" name="set_Value" id="set_Value" value="Edit Name" onclick="setValue()" />
+        <script>
+            function setValue() {
+                var x = document.getElementById("editname");
+                var defaultVal = x.defaultValue;
+                var currentVal = x.value;
+                document.getElementById("Name").innerText=currentVal;
+            }
+
+        </script>
+        <br>
+        <strong>Email:</strong>
+        <label id="Email">
+            John@example.net
+        </label>
+        <br>
+        <input id="editemail" class="editpro"></input><br>
+        <input type="button" name="set_Value" id="set_Email" value="Edit Email" onclick="setEmail()" />
+        <script>
+            function setEmail() {
+                var h = document.getElementById("editemail");
+                var defaultVal = h.defaultValue;
+                var currentVal = h.value;
+                document.getElementById("Email").innerText=currentVal;
+
+            }
+
+        </script>
+        <br>
+        <strong id="">Password:</strong>
+        <label id="Password">
+            *****
+        </label>
+        <br />
+        <input id="changepassword"  class="editpro" type="password"></input><br>
+        <input type="button" name="set_Value" id="set_Pass" value="Edit Password" onclick="setPass()" />
+        <script>
+            function setPass() {
+                var p = document.getElementById("changepassword");
+                var defaultVal = p.defaultValue;
+                var currentVal = p.value;
+                if (p.value==""){
+
+                }
+                else {
+                    document.getElementById("Password").innerText = currentVal;
+                }
+
+                }
+
+        </script>
+        <br>
+
+            <!-- change password so it doesn't show(make sure it confirms and saves changes), For security questions add
+            5-6 standard questions to a dropdown box and then confirms and saves answers -->
+            <strong>Security Question 1: What is your favorite team?</strong>
+
+            <span> </span>
+            <br>
+            <input id="editsec1" class="editpro"></input><br>
+            <button  onclick="">Edit Security Answer 1</button>
+        <br>
+            <strong>Security Question 2:What school did you attend for sixth grade?</strong>
+            <span> </span>
+            <br />
+            <input id="editsec2" class="editpro"></input><br>
+            <button  onclick="window.location.href='/'">Edit Security Answer 2</button>
+
+    </div>
+
+    <!-- Needed because other elements inside ProfilePage have floats -->
+    <div style="clear:both"></div>
+</div>
