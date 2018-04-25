@@ -1,7 +1,6 @@
 //Handles routing of URLs
 
 var bodyParser = require('body-parser');
-var User = require('./user');
 const Auth = require('./auth');
 const DEF_LIST = [
     'GOOG',
@@ -12,13 +11,13 @@ const DEF_LIST = [
 
 module.exports = {
 
-    start: function(app, API){
-        rt(app, API);
+    start: function(app, API, dir){
+        rt(app, API, dir);
     }
 
 };
 
-rt = function (app, API) {
+rt = function (app, API, __dirname) {
     //Router Functions
 
 

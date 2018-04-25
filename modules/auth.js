@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const uri = "mongodb+srv://user_manager:phdDVDpHWh4PAqYG@cosc3489-dv6mn.mongodb.net/users";
 const session = require('express-session');
-const dbUser = require('./modules/UserSchema');
+const dbUser = require('./UserSchema');
 mongoose.connect(uri);
 const db = mongoose.Connection;
 

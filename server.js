@@ -1,14 +1,12 @@
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
-const router = require('./router');
-const API = require('./api');
+const router = require('./modules/router');
+const API = require('./modules/api');
 const symbolsDB = API.symbolDB;
 
 symbolsDB.start();
-router.start(app, API);
-
-
+router.start(app, API, __dirname);
 
 app.use('/res', express.static(__dirname + "/HTML/resources"));
 
