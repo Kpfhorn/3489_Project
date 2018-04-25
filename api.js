@@ -1,12 +1,47 @@
 //Handles access to stock data
 
-var request = require('request');
+const request = require('request');
+const fetch = require('node-fetch');
+
+const sdb = {
+    symbols: '',
+    isStarted: false,
+    search: function(type, string, callback){
+        let results = [];
+        sdb.symbols.forEach(function(item){
+            if(type === 'name'){
+                if(item.name.toLowerCase().includes(string.toLowerCase())){
+                    results.push(item);
+                }
+            }else if(type === 'symbol'){
+                if(item.symbol.toLowerCase().includes(string.toLowerCase())){
+                    results.push(item);
+                }
+            }
+
+        });
+        callback(results);
+    }
+};
+
 
 
 module.exports = {
 
-    getSymbolList: function(callback){
-        getGeneric('/ref-data/symbols', callback);
+    symbolDB: {
+        isStarted: false,
+        symbols: '',
+        start: function(){
+            getSymbolList(function(list){
+                sdb.symbols = list;
+                sdb.isStarted = true;
+            })
+        },
+        search: function(type, key, callback){
+            if(sdb.isStarted){
+                sdb.search(type, key, callback);
+            }
+        }
     },
     /**
      * Gets price data for a given stock
@@ -39,6 +74,10 @@ module.exports = {
         getGenericData(ID, 'chart', callback);
     },
 
+    getChartDataAsync: function(ID){
+        return getGenericDataAsync(ID, 'chart');
+    },
+
     /**
      * get a logo for a given stock
      * @param ID
@@ -60,10 +99,14 @@ module.exports = {
 
 };
 
-var base = 'https://api.iextrading.com/1.0';
+const base = 'https://api.iextrading.com/1.0'
 
-var getStockData = function(company, callback){
-    var info = {
+const getSymbolList =  function(callback){
+    getGeneric('/ref-data/symbols', callback);
+};
+
+const getStockData = function(company, callback){
+     let info = {
         ID: "",
         name: "",
         price: 0
@@ -79,9 +122,9 @@ var getStockData = function(company, callback){
     });
 };
 
-var getPriceData = function(company, callback){
-    var uri = base + '/stock/' + company + '/price';
-    var data = {
+const getPriceData = function(company, callback){
+    const uri = base + '/stock/' + company + '/price';
+    let data = {
         ID: company,
         price: 0
     };
@@ -90,17 +133,25 @@ var getPriceData = function(company, callback){
         callback(data);
     });
 
-}
+};
 
-var getGenericData = function(company, endpoint, callback){
-    var uri = base + '/stock/' + company +'/' + endpoint;
+const getGenericData = function(company, endpoint, callback){
+    const uri = base + '/stock/' + company +'/' + endpoint;
     request(uri, {json: true}, function(err, res, body){
             callback(body);
     });
 };
 
-var getGeneric = function(endpoint, callback){
-    var uri = base + endpoint;
+const getGenericDataAsync = async function(company, endpoint){
+    const uri = base + '/stock/' + company +'/' + endpoint;
+
+    let result = await fetch(uri);
+    let body = await result.json();
+    return body;
+};
+
+const getGeneric = function(endpoint, callback){
+    const uri = base + endpoint;
     request(uri, {json: true}, function(err, res, body){
         callback(body);
     });

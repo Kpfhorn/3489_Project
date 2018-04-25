@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const PATH = './HTML/USERS/users'
+const PATH = './HTML/USERS/users';
 
 let USERS = '';
 

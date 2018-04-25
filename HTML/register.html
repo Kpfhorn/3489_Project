@@ -4,7 +4,7 @@
     <link rel='stylesheet' href="styles.css" type="text/css"/>
     <title>Login</title>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src="/res/js/register.js"></script>
+    <script data-main="/res/js/register.js" src="/res/js/require.js"></script>
 </head>
 <body>
 <div class="header">
@@ -12,19 +12,17 @@
 </div>
 
 <div class="input">
-    <form>
-    <label>First Name</label><br>
+    <label class="lbl">First Name</label><br>
     <input id="name_first" class="in"></input><br>
-    <label>Last Name</label><br>
+    <label class="lbl">Last Name</label><br>
     <input id="name_last" class="in"></input><br>
-    <label>Email</label><br>
+    <label class="lbl">Email</label><br>
     <input id="email" class="in"></input><br>
-    <label>Password</label><br>
+    <label class="lbl">Password</label><br>
     <input id="password" class="in" type="password"></input><br>
-    <label>Confirm Password</label><br>
+    <label class="lbl">Confirm Password</label><br>
     <input id="confirm_password" class="in" type="password"></input><br>
-    <button id="signup" type="submit" class="button" onclick="register()">Sign Up</button>
-    </form>
+    <button id="signup" class="button" onclick="register()">Sign Up</button>
 </div>
 </body>
 </html>

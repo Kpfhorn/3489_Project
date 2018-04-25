@@ -3,10 +3,9 @@
 <head>
     <link rel='stylesheet' href="styles.css" type="text/css"/>
     <title>Profile</title>
-    <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <script src="/res/js/profile.js"></script>
+    <script data-main="/res/js/profile.js" src="/res/js/require.js"></script>
+
 </head>
 <body>
 <div class="header">
@@ -17,13 +16,14 @@
         <li><a href="/home">Home</a></li>
         <li><a href="/profile" class="active">Profile</a></li>
         <li><a href="/search">Search</a></li>
+        <li><a href="/logout">Logout</a></li>
     </ul>
 </div>
 <div class="info">
     <table id="profile">
         <tr>
             <td>
-                <label>Name:</label>
+                <label class="lbl">Name:</label>
             </td>
             <td>
                 <label class="info" id="name"></label>
@@ -31,7 +31,7 @@
         </tr>
         <tr>
             <td>
-                <label>Email Address:</label>
+                <label class="lbl">Email Address:</label>
             </td>
             <td>
                 <label class="info" id="email"></label>

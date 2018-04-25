@@ -1,11 +1,14 @@
 //Handles routing of URLs
 
-var express = require('express');
 var bodyParser = require('body-parser');
 var User = require('./user');
-const cookieParser = require('cookie-parser');
-
-const LOGINS = [];
+const Auth = require('./auth');
+const DEF_LIST = [
+    'GOOG',
+    'AAPl',
+    'MSFT',
+    'TSLA'
+];
 
 module.exports = {
 
@@ -22,26 +25,64 @@ rt = function (app, API) {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
 
-    app.post('/login', function(req, res){
-        var email = req.body.email;
-        var password = req.body.password;
-        User.getUser(email, function(user){
-            if(user.phash === password){
-                console.log('login successful');
-                res.cookie('email', email);
-                res.send('success');
+    Auth.start(app, API);
 
-            }
-        })
+    app.post('/api/info', function(req, res){
+       let ID = req.body.id;
+       API.getInfo(ID, function(data){
+           data.field = req.body.field;
+           res.send(data);
+       })
     });
 
-    app.post('/register', function(req, res){
-        let name = req.body.firstName + ' ' + req.body.lastName;
-        User.addUser(name, req.body.email, req.body.password, function(item){
-            if(item.toString() === 'success'){
-                res.send('success');
-            }else(res.send('user already exists'));
-        })
+    app.post('/api/cinfo', function(req, res){
+        let id = req.body.id;
+       API.getDetailInfo(id, function(body){
+           let payload = body;
+           API.getLogo(id, function(bd){
+               payload.logo = bd.url;
+               res.send(payload);
+           })
+       })
+    });
+
+    app.post('/api/chart', function(req, res){
+       let payload = {};
+       payload.ID = req.body.id;
+       payload.field = req.body.field;
+       API.getChartData(req.body.id, function(body){
+           payload.prices = [];
+           payload.labels = [];
+           body.forEach(function(item, index){
+               payload.labels.push(item.label);
+               payload.prices.push(item.close);
+           });
+           res.send(payload);
+       })
+    });
+
+    app.post('/api/charts', function(req, res){
+        let payload = {};
+        let IDs = req.body.IDs;
+        payload.data = [];
+        payload.field = req.body.field;
+        let count = 0;
+        IDs.forEach(async function(item, index){
+            let body = await API.getChartDataAsync(item);
+            let set = {};
+            set.ID = item;
+            set.prices = [];
+            set.labels = [];
+            body.forEach(function(itm, idx){
+                set.labels.push(itm.label);
+                set.prices.push(itm.close);
+            });
+            payload.data.push(set);
+            if(index === IDs.length - 1){
+                res.send(payload);
+            }
+        });
+
     });
 
     app.post('/api/priceData', function(req, res){
@@ -72,6 +113,21 @@ rt = function (app, API) {
             }
             res.send(payload);
         })
+    });
+
+    app.get('/api/user/stock_list', Auth.checkLogin, function(req, res){
+       if(res.locals.user){
+           res.send(res.locals.user.stock_list);
+       }else{
+           res.send(DEF_LIST);
+       }
+    });
+
+    app.post('/api/search', function(req, res){
+        let data = req.body;
+        API.symbolDB.search(data.type, data.text, function(results){
+            res.send(results);
+        });
     });
 
     app.get('/', function (req, res) {
@@ -115,3 +171,5 @@ rt = function (app, API) {
 
 
 };
+
+

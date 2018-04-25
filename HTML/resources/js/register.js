@@ -1,4 +1,7 @@
-
+requests = '';
+requirejs(['/res/js/util/requests.js'], function(r){
+    requests = r;
+});
 const register = function(){
 
     if($('#password').val() === $('#confirm_password').val()) {
@@ -9,20 +12,13 @@ const register = function(){
             email: $('#email').val(),
             password: $('#password').val()
         };
-
-        var payload = {
-            data: JSON.stringify(user),
-            contentType: 'application/json',
-            type: 'POST',
-            url: '/register',
-            success: function(dt){
-                if(dt.toString() === 'success'){
-                    window.location.href = '/';
-                }else{
-                    alert('Registration failed: ' + dt.toString());
-                }
+        requests.post('/register', user, function(dt){
+            console.log(dt);
+            if(!dt.error){
+                window.location.href = dt;
+            }else{
+                alert('Registration failed: ' + dt.error.toString());
             }
-        };
-        $.ajax(payload);
+        });
     }
 }

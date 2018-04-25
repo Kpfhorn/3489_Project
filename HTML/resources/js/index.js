@@ -13,8 +13,10 @@ var login = function(){
         url: '/login',
         success: function(dt){
             console.log(dt);
-            if(dt.toString() === 'success'){
+            if(!dt.error){
                 window.location.href = '/home';
+            }else{
+                alert("Error: " + dt.error.toString());
             }
         }
     };

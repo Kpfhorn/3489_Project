@@ -20,9 +20,13 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
+    "connect-mongo": "^2.0.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
-    "jsonwebtoken": "^8.2.0",
+    "express-session": "^1.15.6",
+    "mongodb-core": "^3.0.7",
+    "mongoose": "^5.0.16",
+    "node-fetch": "^2.1.2",
     "request": "^2.83.0",
     "socket.io": "^2.0.4"
   }

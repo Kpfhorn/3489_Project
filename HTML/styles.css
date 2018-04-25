@@ -1,5 +1,5 @@
 
-body{
+html{
     font-family: "SansSerif";
 }
 .input{
@@ -36,6 +36,8 @@ body{
 }
 
 .info{
+    font-size: 150%;
+    color: #FAFAFA;
     width: 50%;
 }
 
@@ -47,15 +49,16 @@ body{
     width: 20%;
 }
 
-body{
-    background-color: #444444;
-}
-
-label{
+.lbl{
     font-size: 150%;
     color: #FAFAFA;
     margin-left: 5%;
 }
+
+body{
+    background-color: #444444;
+}
+
 
 canvas{
     width: 50%;
@@ -109,10 +112,14 @@ ul li a:hover {
 }
 
 .graphs tr .text .title{
+    color: #FAFAFA;
+    margin-left: 5%;
     font-size: 250%;
 }
 .graphs tr .text label{
     font-size: 150%;
+    color: #FAFAFA;
+    margin-left: 5%;
 }
 
 .active{
@@ -171,7 +178,6 @@ a:hover{
 }
 #EditInfo{
     color: white;
-    font-family: "Arial";
     font-size: 30px;
 
 }
@@ -180,8 +186,7 @@ a:hover{
     width: 10%;
 }
 .editpro{
-    height: 10%;
     width: 20%;
-    font-size: 100%;
+    font-size: 80%;
 
 }
