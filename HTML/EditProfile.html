@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel='stylesheet' href="styles.css" type="text/css"/>
+    <title>Home</title>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script data-main="/res/js/edit-profile.js" src="/res/js/require.js"></script>
+</head>
+<body>
+<div class="header">
+    Edit Profile
+</div>
+<div class="navbar">
+    <ul>
+        <li><a href="/home" >Home</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/search">Search</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+
+    <div id="EditInfo">
+        Name:
+        <label id="Name"></label>
+        <br>
+        <input id="editname" class="editpro"/><br>
+        <input type="button" name="set_Value" id="set_Value" value="Edit Name" onclick="setValue()" />
+        <script>
+            function setValue() {
+                var x = document.getElementById("editname");
+                var defaultVal = x.defaultValue;
+                var currentVal = x.value;
+                document.getElementById("Name").innerText=currentVal;
+            }
+
+        </script>
+        <br>
+        Email:
+        <label id="Email"></label>
+        <br>
+        <input id="editemail" class="editpro"></input><br>
+        <input type="button" name="set_Value" id="set_Email" value="Edit Email" onclick="setEmail()" />
+        <script>
+            function setEmail() {
+                var h = document.getElementById("editemail");
+                var defaultVal = h.defaultValue;
+                var currentVal = h.value;
+                document.getElementById("Email").innerText=currentVal;
+
+            }
+
+        </script>
+        <br>
+        Password
+        <label id="Password"></label>
+        <br />
+        <input id="changepassword"  class="editpro" type="password"></input><br>
+        <input type="button" name="set_Value" id="set_Pass" value="Edit Password" onclick="setPass()" />
+        <script>
+            function setPass() {
+                var p = document.getElementById("changepassword");
+                var defaultVal = p.defaultValue;
+                var currentVal = p.value;
+                if (p.value==""){
+
+                }
+                else {
+                    document.getElementById("Password").innerText = currentVal;
+                }
+
+                }
+
+        </script>
+        <br>
+
+            <!-- change password so it doesn't show(make sure it confirms and saves changes), For security questions add
+            5-6 standard questions to a dropdown box and then confirms and saves answers -->
+            Security Question 1: What is your favorite team?
+
+            <span> </span>
+            <br>
+            <input id="editsec1" class="editpro"></input><br>
+            <button  onclick="">Edit Security Answer 1</button>
+        <br>
+            Security Question 2:What school did you attend for sixth grade?
+            <span> </span>
+            <br />
+            <input id="editsec2" class="editpro"></input><br>
+            <button  onclick="window.location.href='/'">Edit Security Answer 2</button>
+
+    </div>
+</div>

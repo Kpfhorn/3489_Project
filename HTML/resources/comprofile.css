@@ -1,0 +1,45 @@
+#header2 label{
+    font-size: 400%;
+    margin: 1mm;
+}
+#information label{
+    font-size: 150%;
+    margin:auto;
+}
+
+#header2 #name{
+    font-size: 400%;
+}
+
+#header2 #price{
+    font-size: 300%;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+table, th, td {
+    border-color:black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+    background-color: white
+}
+table#t01 th {
+    background-color: black;
+    color: white;
+}
+#canvas{
+    display: block;
+    margin:auto;
+    width: 60%;
+}

@@ -1,9 +1,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <link rel='stylesheet' href="./styles.css" type="text/css"/>
+    <link rel='stylesheet' href="styles.css" type="text/css"/>
     <title>Profile</title>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script data-main="/res/js/profile.js" src="/res/js/require.js"></script>
+
 </head>
 <body>
 <div class="header">
@@ -14,13 +16,35 @@
         <li><a href="/home">Home</a></li>
         <li><a href="/profile" class="active">Profile</a></li>
         <li><a href="/search">Search</a></li>
+        <li><a href="/logout">Logout</a></li>
     </ul>
 </div>
 <div class="info">
-    <label>Name</label><br>
-    <label class="info" id="name"></label><br>
-    <label>Email Address</label><br>
-    <label class="info" id="email"></label>
+    <table id="profile">
+        <tr>
+            <td>
+                <label class="lbl">Name:</label>
+            </td>
+            <td>
+                <label class="info" id="name"></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="lbl">Email Address:</label>
+            </td>
+            <td>
+                <label class="info" id="email"></label>
+            </td>
+        </tr>
+        <tr id="buttons">
+            <td>
+                <button  id="editInfo" onclick="window.location.href='/EditProfile'">Edit User Info</button>
+                <button  id="stockSelect"  onclick="openSelector()">Edit Stock Profile</button>
+            </td>
+        </tr>
+    </table>
+    <canvas id="profileChart"></canvas>
 </div>
 </body>
 </html>

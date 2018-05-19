@@ -1,4 +1,7 @@
 
+html{
+    font-family: "SansSerif";
+}
 .input{
     width: 30%;
 	margin-left: 30%;
@@ -15,9 +18,8 @@
 }
 
 .button{
-	height: 100%;
     width: auto;
-	font-size: 150%;
+	font-size: 100%;
 	margin-top: 2%;
     margin-bottom: 2%;
     margin-left: 5%;
@@ -27,7 +29,6 @@
     top: 0;
 	font-size: 300%;
 	color: #FAFAFA;
-    font-family: "SansSerif";
 }
 
 #logo{
@@ -35,25 +36,36 @@
 }
 
 .info{
+    font-size: 150%;
+    color: #FAFAFA;
     width: 50%;
+}
+
+#home_table{
+    left-margin: 1mm;
+}
+
+#home_table tr td{
+    width: 20%;
+}
+
+.lbl{
+    font-size: 150%;
+    color: #FAFAFA;
+    margin-left: 5%;
 }
 
 body{
     background-color: #444444;
 }
 
-label{
-    font-size: 150%;
-    color: #FAFAFA;
-    margin-left: 5%;
-    font-family: "SansSerif";
-}
 
 canvas{
     width: 50%;
 }
 
 /*Navigation bar*/
+
 ul {
 	list-style-type: none;
 	margin: 0;
@@ -73,7 +85,6 @@ ul li a {
     font-size: 150%;
 	padding: 14px 16px;
 	text-decoration: none;
-    font-family: "SansSerif";
 }
 
 /* Change the link color to #111 (black) on hover */
@@ -83,19 +94,14 @@ ul li a:hover {
 
 /*Stock Content*/
 .graphs {
-    margin: 1%;
-    padding: 0;
-    overflow: hidden;
     width: 100%;
     border-spacing: 3mm;
 }
 
 .graphs tr td {
-    padding: 2mm;
     background-color: #4A2D7F;
 }
 .graphs tr .text{
-    width: 50%;
     background-color: #111111;
 }
 
@@ -103,21 +109,17 @@ ul li a:hover {
     font-size: 150%;
     color: #FAFAFA;
     margin-left: 5%;
-    font-family: "SansSerif";
 }
 
 .graphs tr .text .title{
+    color: #FAFAFA;
+    margin-left: 5%;
     font-size: 250%;
 }
 .graphs tr .text label{
     font-size: 150%;
-}
-
-.graphs tr td img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
+    color: #FAFAFA;
+    margin-left: 5%;
 }
 
 .active{
@@ -126,15 +128,6 @@ ul li a:hover {
 
 .search{
     width: 100%;
-}
-
-#searchControls{
-
-}
-
-.search{
-    width: 100%;
-    font-family: SansSerif;
     color: white;
     font-size: 120%;
 }
@@ -148,6 +141,9 @@ a:link{
     color: white;
 }
 
+li a:visited{
+    color: white;
+}
 a:visited{
     color: #DDDDDD;
 }
@@ -163,4 +159,34 @@ a:hover{
 
 #names{
     width: 60%;
+}
+
+#profile{
+    width: 100%;
+}
+
+#profile td{
+    border: none;
+}
+
+#buttons td{
+    padding: 2%;
+}
+
+#buttons td button{
+    width: 40%;
+}
+#EditInfo{
+    color: white;
+    font-size: 30px;
+
+}
+#changepassword{
+    height: 70%;
+    width: 10%;
+}
+.editpro{
+    width: 20%;
+    font-size: 80%;
+
 }

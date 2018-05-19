@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <link rel='stylesheet' href="./styles.css" type="text/css"/>
+    <link rel='stylesheet' href="/res/comprofile.css" type="text/css"/>
+    <link rel='stylesheet' href="/styles.css" type="text/css"/>
     <title> Company Profile</title>
-    <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src="/res/js/com-profile.js"></script>
+    <script data-main="/res/js/com-profile.js" src="/res/js/require.js"></script>
 </head>
 <body>
 <div class="header">
@@ -16,13 +16,30 @@
         <li><a href="/home">Home</a></li>
         <li><a href="/profile">Profile</a></li>
         <li><a href="/search">Search</a></li>
+        <li><a href="/logout">Logout</a></li>
     </ul>
 </div>
-<div class="info">
-    <img id="logo"/><br>
-    <label class="info" id="name"></label><br>
-    <br>
-    <label class="info" id="description"></label>
+
+<div id="header2">
+    <img id="logo"/> <br>
+    <label id="name"></label> <label id="price"></label>
 </div>
+
+<div id="information"  align="left">
+    <label id="description"></label>
+</div>
+<div id="canvas">
+<canvas id="chart"></canvas>
+</div>
+<table id="t01" align="center">
+    <tr>
+        <th>Day</th>
+        <th>Open</th>
+        <th>Days Low</th>
+        <th>Days High</th>
+        <th>Close</th>
+    </tr>
+</table>
+
 </body>
 </html>

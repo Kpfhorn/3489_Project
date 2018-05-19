@@ -7,12 +7,10 @@ Technologies for front-end
 - [CSS](https://www.w3schools.com/css/)
 - [JavaScript](https://www.w3schools.com/js/)
 - [jQuery](https://www.w3schools.com/jQuery/)
-- [Socket.io](https://socket.io)
 
 <br>Technologies for back-end<br>
 - 
 - [Node.js](https://nodejs.org)
-- [Socket.io](https://socket.io)
 
 APIs in use 
 -
