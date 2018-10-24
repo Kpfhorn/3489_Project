@@ -1,5 +1,5 @@
 # 3489 Project
-This is the <b>main</b> branch for a project for the class COSC 3489<br>
+This is the <b>main</b> branch for a project for the class COSC 3489 <b>Intro to Software Engineering</b><br>
 
 Technologies for front-end
 - 
